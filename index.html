@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body
+        {
+background-image:url( "https://sujalnegi933.github.io/river/river_side.jpg") ;
+background-repeat: no-repeat;
+background-size: cover ;
+        }
+.container
+{
+    height:60vh;
+    width:60vh;
+    display:flex;
+justify-content: center;
+align-items: center;
+
+}
+nav{
+    background-color:rgba(0, 0, 0, 0.272);
+    padding: 30px;
+}
+ 
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="text-dark d-flex justify-content-around align-items-center ">
+          
+          <button class="btn btn-success me-1">
+            <i class="fa-solid fa-backward" style="color:rgba(0, 0, 0, 0.442);"></i>
+            <a href="file:///C:/Users/sanju/OneDrive/Desktop/A%20W%20T/login.html" class="text-white text-decoration-none">BACK</a>
+          </button>
+      
+       
+          <button class="btn btn-success me-1">
+            <i class="fa-brands fa-hire-a-helper" style="color:rgba(0, 0, 0, 0.442);"></i>
+            <a href="https://sujalnegi933.github.io/h/" class="text-white text-decoration-none">HOW TO LOG IN?</a>
+          </button>
+      
+         
+          <button class="btn btn-success me-1">
+            <i class="fa-solid fa-circle-user" style="color:rgba(0, 0, 0, 0.443)"></i>
+            <a href="file:///C:/Users/sanju/OneDrive/Desktop/A%20W%20T/login.html" class="text-white text-decoration-none">Already have an account?</a>
+          </button>
+        </nav>
+      </header>
+      
+        <div class="container mt-4">
+     <div class="card m-4 " style="width:39%;  background-color:rgba(255,255,255,0.35);">
+        <div class="card-body">
+            <h2 class=" text-center text-success fw-bold fst-italic border border-2 border-success">Create an Account</h2>
+            <h6 class=" text-center text-success fw-bold fst-italic border border-2 border-success ">It's quick and easy.</h6>
+
+            <form class="form-group mt-4 border border-2 border-success" method="POST" action=" https://sujalnegi933.github.io/back/" >
+          <input type="text"  placeholder="Enter Username " id="username" class=" form-control m-2">
+          <input type="button" value="Next" id="next1" class=" btn btn-success btn-active m-2 form-control">   
+
+         <input type="email" placeholder="Enter email" id="email" class="m-2 form-control">
+         <input type="button" value="Next" id="next2" class=" btn btn-success btn-active m-2 form-control">
+
+   
+<input type="password" id="pass1" placeholder="Enter your password" class="form-control m-2">
+<input type="password" id="pass2"  placeholder="Confirm password" class="form-control m-2">
+
+<label id="check">
+<input type="checkbox" class="ms-5" > I agree all term and conditions
+</label>
+<input type="button" value="Next" id="next3" class=" btn btn-success btn-active m-2 form-control">
+<input type="Submit" class="btn btn-success btn-active m-2 form-control" id="submit">
+  
+        </div>
+     </div>
+    </div>
+</form>
+
+    <script>
+$(document).ready(function(){
+    $("#next1,#email,#next2,#pass1,#pass2,#next3,#submit,#check").hide();
+
+    $("#username").on("input",function(){
+        if ($(this).val().trim() != "") {
+            $("#next1").show();
+        } else {
+            $("#next1").hide(); 
+        }
+    });
+ 
+    $("#next1").click(function(){
+        $("#next1").hide(); 
+        $("#email").show(); 
+    });
+
+$("#email").on("input",function(){
+        if ($(this).val().trim() != "") {
+            $("#next2").show();
+        } else {
+            $("#next2").hide(); 
+        }
+    });
+    $("#next2").click(function(){
+        $("#next2").hide(); 
+        $("#pass1 , #pass2").show(); 
+    });
+    $("#pass1 ,#pass2").on("input",function(){
+        if ($(this).val().trim() != "") {
+            $("#next3").show();
+        } else {
+            $("#next3").hide(); 
+        }
+    });
+    $("#next3").click(function(){
+        $("#next3").hide(); 
+        $("#check").show(); 
+        $("#submit").show();
+    });
+    $("#submit").click(function(event) {
+        event.preventDefault();
+    var digit = 8; 
+    let error = ""; 
+    let err = false;
+
+    
+    if ($("input[placeholder='Enter your password']").val().trim().length < digit) {
+        error += "Please enter a password with at least 8 characters.\n";
+        err = true;
+    }
+
+   
+    if ($("input[placeholder='Enter your password']").val().trim() !== $("input[placeholder='Confirm password']").val().trim()) {
+        error += "Passwords do not match.\n";
+        err = true;
+        
+    }
+
+ 
+    if (!$("input[type='checkbox']").is(":checked")) {
+        error += "You must accept the terms and conditions.\n";
+        err = true;
+    }
+
+   
+    if (err) {
+        alert(error);
+        $("#submit").hide();
+    }
+    else{
+        $("#submit").show();
+        alert("Your account has been successfully created. Thank you! ☺️");
+    }
+});
+
+
+});
+    </script>
+</body>
+</html>
